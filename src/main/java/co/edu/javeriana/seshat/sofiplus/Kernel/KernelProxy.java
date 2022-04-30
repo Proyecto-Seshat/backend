@@ -1,5 +1,7 @@
 package co.edu.javeriana.seshat.sofiplus.Kernel;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 
 public class KernelProxy {
@@ -11,7 +13,7 @@ public class KernelProxy {
         this.params = params;
     }
 
-    public Object run(){
+    public Object run() {
         return this.method.run(this.params);
     }
 }
