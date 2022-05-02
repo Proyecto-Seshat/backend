@@ -1,11 +1,6 @@
 package co.edu.javeriana.seshat.sofiplus;
 
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
-import co.edu.javeriana.seshat.sofiplus.Modules.BusinessModule;
-import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.GetFactura;
-import co.edu.javeriana.seshat.sofiplus.Modules.src.Terceros.Methods.GetCliente;
-import co.edu.javeriana.seshat.sofiplus.Modules.src.Terceros.Methods.RegisterCliente;
-import co.edu.javeriana.seshat.sofiplus.Modules.src.Troll.Methods.TrollAgent;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -18,7 +13,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
 import java.util.Objects;
 
 @Component

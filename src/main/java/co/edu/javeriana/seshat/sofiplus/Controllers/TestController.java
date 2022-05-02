@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class TestController {
@@ -46,5 +47,10 @@ public class TestController {
         HashMap<String, Object> params = new HashMap<>();
         params.put("cedula", cedula);
         return (Cliente) Kernel.processRequest("module.troll.trollAgent", params).run();
+    }
+
+    @PostMapping("/postFactura")
+    public String postFactura(@RequestBody HashMap<String, Object> body){
+        return (String) Kernel.processRequest("module.factura.registerFactura", body).run();
     }
 }

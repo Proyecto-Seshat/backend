@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -15,6 +16,7 @@ import java.net.URLClassLoader;
 import java.util.Objects;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@EnableMongoRepositories
 public class SofiplusApplication {
     public static void main(String[] args) {
         SpringApplication.run(SofiplusApplication.class, args);

@@ -1,4 +1,4 @@
-package co.edu.javeriana.seshat.sofiplus.Modules.src.Factura;
+package co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Methods;
 
 import co.edu.javeriana.seshat.sofiplus.Entities.FacturaEntity;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
