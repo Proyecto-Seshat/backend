@@ -4,7 +4,7 @@ import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.Carrito;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.Factura;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.FacturaMetadata;
-import co.edu.javeriana.seshat.sofiplus.Repositories.FacturaMetadataRepository;
+import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.FacturaMetadataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;

@@ -28,15 +28,17 @@ public class BeanRegistration implements BeanDefinitionRegistryPostProcessor {
             File f = new File("./src/main/java/co/edu/javeriana/seshat/sofiplus/Modules/src");
             for (File module : Objects.requireNonNull(f.listFiles())) {
                 File fMethod = new File(module.getAbsolutePath() + "/Methods/");
-                for (File method :
-                        Objects.requireNonNull(fMethod.listFiles())) {
-                    URL[] cp = {method.toURI().toURL()};
-                    try (URLClassLoader urlcl = new URLClassLoader(cp)) {
-                        String methodName = method.getName().substring(0, method.getName().lastIndexOf('.'));
-                        Class<? extends ModuleRunnable> methodClass = (Class<? extends ModuleRunnable>) urlcl.loadClass("co.edu.javeriana.seshat.sofiplus.Modules.src." + module.getName() + ".Methods." + methodName);
-                        bdr.registerBeanDefinition(methodClass.getCanonicalName(), BeanDefinitionBuilder.genericBeanDefinition(methodClass).setScope("prototype").getBeanDefinition());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                if(fMethod.listFiles() != null){
+                    for (File method :
+                            Objects.requireNonNull(fMethod.listFiles())) {
+                        URL[] cp = {method.toURI().toURL()};
+                        try (URLClassLoader urlcl = new URLClassLoader(cp)) {
+                            String methodName = method.getName().substring(0, method.getName().lastIndexOf('.'));
+                            Class<? extends ModuleRunnable> methodClass = (Class<? extends ModuleRunnable>) urlcl.loadClass("co.edu.javeriana.seshat.sofiplus.Modules.src." + module.getName() + ".Methods." + methodName);
+                            bdr.registerBeanDefinition(methodClass.getCanonicalName(), BeanDefinitionBuilder.genericBeanDefinition(methodClass).setScope("prototype").getBeanDefinition());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             }
