@@ -11,16 +11,28 @@ public class FacturaMetadata {
     public double total;
     public Date fechaVencimiento;
 
-    public List<CarritoItem> carrito;
+    public List<CarritoItem>    carrito;
+
+    public Date fecha;
+
+    public String idCliente;
+
+    public String nombreCliente;
+
+    public Boolean tipoPago;
+
 
     public FacturaMetadata() {
     }
 
-    public FacturaMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito) {
+    public FacturaMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito, Date fecha, String idCliente, Boolean tipoPago) {
         this.id = id;
         this.total = total;
         this.fechaVencimiento = fechaVencimiento;
         this.carrito = carrito;
+        this.fecha = fecha;
+        this.idCliente = idCliente;
+        this.tipoPago = tipoPago;
     }
 
     public List<CarritoItem> getCarrito() {
