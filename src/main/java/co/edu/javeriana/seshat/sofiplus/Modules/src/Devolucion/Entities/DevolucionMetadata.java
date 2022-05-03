@@ -1,6 +1,5 @@
 package co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.Entities;
 
-import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.CarritoItem;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -9,21 +8,12 @@ import java.util.List;
 public class DevolucionMetadata    {
     @Id
     public String id;
-
     public double total;
-
     public Date fechaVencimiento;
-
     public List<CarritoItem>    carrito;
-
     public Date fecha;
-
-    public String idCliente;
-
     public String nombreCliente;
-
     public Boolean tipoPago;
-
     public DevolucionMetadata() {
     }
 
@@ -36,7 +26,6 @@ public class DevolucionMetadata    {
         this.fechaVencimiento = fechaVencimiento;
         this.carrito = carrito;
         this.fecha = fecha;
-        this.idCliente = idCliente;
         this.tipoPago = tipoPago;
     }
 
@@ -80,14 +69,6 @@ public class DevolucionMetadata    {
         this.fecha = fecha;
     }
 
-    public String getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
-    }
-
     public String getNombreCliente() {
         return nombreCliente;
     }
@@ -102,5 +83,19 @@ public class DevolucionMetadata    {
 
     public void setTipoPago(Boolean tipoPago) {
         this.tipoPago = tipoPago;
+    }
+
+
+    @Override
+    public String toString() {
+        return "DevolucionMetadata{" +
+                "id='" + id + '\'' +
+                ", total=" + total +
+                ", fechaVencimiento=" + fechaVencimiento +
+                ", carrito=" + carrito +
+                ", fecha=" + fecha +
+                ", nombreCliente='" + nombreCliente + '\'' +
+                ", tipoPago=" + tipoPago +
+                '}';
     }
 }
