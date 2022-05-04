@@ -53,4 +53,9 @@ public class TestController {
     public String postFactura(@RequestBody HashMap<String, Object> body){
         return (String) Kernel.processRequest("module.factura.registerFactura", body).run();
     }
+
+    @PostMapping("/testFactura")
+    public String testFactura(@RequestBody HashMap<String, Object> body){
+        return (String) Kernel.processRequest("module.factura.testFactura", body).run();
+    }
 }

@@ -11,5 +11,7 @@ public interface DataBroker {
     public void registerMetadata(String key, HashMap<String, Object> document);
     public void registerAgent(PersonaEntity persona);
     public PersonaEntity requestAgent(String id);
-    public void registerItem(ItemEntity item);
+    public ItemEntityPK registerItem(ItemEntity item);
+    public String registerFamiempresa(FamiempresaEntity famiempresa);
+    public int registerRecurso(RecursoEntity recurso);
 }

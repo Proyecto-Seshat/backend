@@ -11,14 +11,14 @@ public class FacturaMetadata {//viene lo publico
     public String id;
     public double total;
     public Date fechaVencimiento;
-    public List<CarritoItem>    carrito;
+    public List<CarritoItem> carrito;
     public Date fecha;
     public Boolean tipoPago;//credito==1 contado==0
 
     public FacturaMetadata() {
     }
 
-    public FacturaMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito, Date fecha,  Boolean tipoPago) {
+    public FacturaMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito, Date fecha, Boolean tipoPago) {
         this.id = id;
         this.total = total;
         this.fechaVencimiento = fechaVencimiento;

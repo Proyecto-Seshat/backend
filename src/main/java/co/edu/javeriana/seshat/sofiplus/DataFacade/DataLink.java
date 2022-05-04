@@ -1,16 +1,14 @@
 package co.edu.javeriana.seshat.sofiplus.DataFacade;
 
 import co.edu.javeriana.seshat.sofiplus.Entities.*;
-import co.edu.javeriana.seshat.sofiplus.Repositories.EventoEntityRepository;
-import co.edu.javeriana.seshat.sofiplus.Repositories.ItemEntityRepository;
-import co.edu.javeriana.seshat.sofiplus.Repositories.PersonaEntityRepository;
-import co.edu.javeriana.seshat.sofiplus.Repositories.ReaEntityRepository;
+import co.edu.javeriana.seshat.sofiplus.Repositories.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +25,12 @@ public class DataLink implements DataBroker {
 
     @Resource
     private ItemEntityRepository itemRepo;
+
+    @Resource
+    private FamiempresaEntityRepository famiempresaEntityRepository;
+
+    @Resource
+    private RecursoEntityRepository recursoEntityRepository;
 
     @PersistenceContext
     private EntityManager em;
@@ -45,7 +49,12 @@ public class DataLink implements DataBroker {
 
     @Override
     public void registerRea(EventoEntity evento, ReaEntity[] detalles) {
-
+        try {
+            eventoRepo.save(evento);
+            reaRepo.saveAll(Arrays.asList(detalles));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -66,14 +75,30 @@ public class DataLink implements DataBroker {
     @Override
     public PersonaEntity requestAgent(String id) {
         Optional<PersonaEntity> persona = personaRepo.findById(id);
-        if(persona.isEmpty()){
+        if (persona.isEmpty()) {
             return null;
         }
         return persona.get();
     }
 
     @Override
-    public void registerItem(ItemEntity item) {
+    public ItemEntityPK registerItem(ItemEntity item) {
         itemRepo.save(item);
+        ItemEntityPK pk = new ItemEntityPK();
+        pk.setNitFamiempresa(item.getNitFamiempresa());
+        pk.setCodigo(item.getCodigo());
+        return pk;
+    }
+
+    @Override
+    public String registerFamiempresa(FamiempresaEntity famiempresa) {
+        famiempresaEntityRepository.save(famiempresa);
+        return famiempresa.getNit();
+    }
+
+    @Override
+    public int registerRecurso(RecursoEntity recurso) {
+        recursoEntityRepository.save(recurso);
+        return recurso.getIdRecurso();
     }
 }
