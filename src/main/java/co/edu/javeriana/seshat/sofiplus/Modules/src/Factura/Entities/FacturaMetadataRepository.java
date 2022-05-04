@@ -7,4 +7,10 @@ import java.util.Date;
 
 public interface FacturaMetadataRepository extends MongoRepository<FacturaMetadata, String> {
     FacturaMetadata findByFechaVencimiento(Date fechaVencimiento);
+    FacturaMetadata findByFecha(Date fecha);
+    FacturaMetadata findByTotal(double total);
+    FacturaMetadata findById();
+
+
+
 }

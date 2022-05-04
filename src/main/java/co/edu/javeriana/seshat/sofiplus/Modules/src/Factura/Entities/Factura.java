@@ -2,18 +2,20 @@ package co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities;
 
 import java.util.List;
 
-public class Factura {
+public class Factura {//aca viene lo privado
     String clienteCedula;
     double total;
     List<CarritoItem> carrito;
+    public String nombreCliente;
 
     public Factura() {
     }
 
-    public Factura(String clienteCedula, double total, List<CarritoItem> carrito) {
+    public Factura(String clienteCedula, double total, List<CarritoItem> carrito, String nombreCliente) {
         this.clienteCedula = clienteCedula;
         this.total = total;
         this.carrito = carrito;
+        this.nombreCliente = nombreCliente;
     }
 
     public String getClienteCedula() {
@@ -38,6 +40,14 @@ public class Factura {
 
     public void setCarrito(List<CarritoItem> carrito) {
         this.carrito = carrito;
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     @Override
