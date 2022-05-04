@@ -1,11 +1,11 @@
-package co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities;
+package co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.Entities;
 
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.FacturaMetadata;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Date;
 
-public interface FacturaMetadataRepository extends MongoRepository<FacturaMetadata, String> {
+public interface DevolucionMetadataRepository extends MongoRepository<FacturaMetadata, String> {
 
     FacturaMetadata findById();
     FacturaMetadata findByFechaVencimiento(Date fechaVencimiento);

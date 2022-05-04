@@ -8,16 +8,19 @@ public class CarritoItem {
 
     public int idItem;
 
+    public boolean tipo;//consta de articulo = 0 false, o servicio =1 true
+
 
     public CarritoItem() {
     }
 
-    public CarritoItem(String nombre, int cantidad, int descuento, int idItem) {
+    public CarritoItem(String nombre, int cantidad, int descuento, int idItem,boolean tipo) {
 
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.descuento = descuento;
         this.idItem = idItem;
+        this.tipo = false;
     }
 
     public String getNombre() {
@@ -52,11 +55,22 @@ public class CarritoItem {
         this.idItem = idItem;
     }
 
+    public boolean isTipo() {
+        return tipo;
+    }
+
+    public void setTipo(boolean tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
         return "CarritoItem{" +
                 "nombre='" + nombre + '\'' +
                 ", cantidad=" + cantidad +
+                ", descuento=" + descuento +
+                ", idItem=" + idItem +
+                ", tipo=" + tipo +
                 '}';
     }
 }

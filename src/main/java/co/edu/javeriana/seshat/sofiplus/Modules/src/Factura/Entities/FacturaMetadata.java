@@ -13,18 +13,20 @@ public class FacturaMetadata {//viene lo publico
     public Date fechaVencimiento;
     public List<CarritoItem>    carrito;
     public Date fecha;
-    public Boolean tipoPago;//credito==1 contado==0
+    public Boolean tipoPago;//contado==0 (false) ,  credito==1 (true)
+    public boolean estado;//activa==0 (false) ,  anulada==1 (true)
 
     public FacturaMetadata() {
     }
 
-    public FacturaMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito, Date fecha,  Boolean tipoPago) {
+    public FacturaMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito, Date fecha,  Boolean tipoPago, boolean estado) {
         this.id = id;
-        this.total = total;
+        this.total = total;//preguntar porq el total esta dos veces
         this.fechaVencimiento = fechaVencimiento;
         this.carrito = carrito;
         this.fecha = fecha;
-        this.tipoPago = tipoPago;
+        this.tipoPago = false;
+        this.estado = false;
     }
 
     public List<CarritoItem> getCarrito() {
@@ -76,12 +78,24 @@ public class FacturaMetadata {//viene lo publico
         this.tipoPago = tipoPago;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
         return "FacturaMetadata{" +
                 "id='" + id + '\'' +
                 ", total=" + total +
                 ", fechaVencimiento=" + fechaVencimiento +
+                ", carrito=" + carrito +
+                ", fecha=" + fecha +
+                ", tipoPago=" + tipoPago +
+                ", estado=" + estado +
                 '}';
     }
 }

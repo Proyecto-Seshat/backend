@@ -8,6 +8,6 @@ import java.util.HashMap;
 public class GetFactura implements ModuleRunnable {
     @Override
     public Object run(HashMap<String, Object> params) {
-        return new FacturaEntity((String) params.get("clienteCedula"), (int) params.get("total"));
+        return new FacturaEntity((String) params.get("clienteCedula"), (int) params.get("total"));// porque pasa esto ?
     }
 }

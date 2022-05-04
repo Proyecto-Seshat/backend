@@ -3,6 +3,7 @@ package co.edu.javeriana.seshat.sofiplus.Entities;
 public class FacturaEntity {
     private String clienteCedula;
     private int total;
+ //id factura
 
     public FacturaEntity(String clienteCedula, int total) {
         this.clienteCedula = clienteCedula;
