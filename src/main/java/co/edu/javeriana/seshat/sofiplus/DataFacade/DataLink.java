@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +49,12 @@ public class DataLink implements DataBroker {
 
     @Override
     public void registerRea(EventoEntity evento, ReaEntity[] detalles) {
-
+        try {
+            eventoRepo.save(evento);
+            reaRepo.saveAll(Arrays.asList(detalles));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
