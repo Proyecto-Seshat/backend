@@ -8,17 +8,17 @@ public class ReciboDeCaja {//aca viene lo privado
 
     private String cedulaDeQuienPaga;
     private String nombreDeQuienPaga;
-    private double idRecibo;
+    private double idFacturaAsociada;
     private double debitos;
     private double creditos;
 
     public ReciboDeCaja() {
     }
 
-    public ReciboDeCaja(String cedulaDeQuienPaga, String nombreDeQuienPaga, double idRecibo, double debitos, double creditos) {
+    public ReciboDeCaja(String cedulaDeQuienPaga, String nombreDeQuienPaga, double idFacturaAsociada, double debitos, double creditos) {
         this.cedulaDeQuienPaga = cedulaDeQuienPaga;
         this.nombreDeQuienPaga = nombreDeQuienPaga;
-        this.idRecibo = idRecibo;
+        this.idFacturaAsociada = idFacturaAsociada;
         this.debitos = debitos;
         this.creditos = creditos;
     }
@@ -31,12 +31,12 @@ public class ReciboDeCaja {//aca viene lo privado
         this.cedulaDeQuienPaga = cedulaDeQuienPaga;
     }
 
-    public double getIdRecibo() {
-        return idRecibo;
+    public double getIdFacturaAsociada() {
+        return idFacturaAsociada;
     }
 
-    public void setIdRecibo(double idRecibo) {
-        this.idRecibo = idRecibo;
+    public void setIdFacturaAsociada(double idFacturaAsociada) {
+        this.idFacturaAsociada = idFacturaAsociada;
     }
 
     public String getNombreDeQuienPaga() {
@@ -68,7 +68,7 @@ public class ReciboDeCaja {//aca viene lo privado
         return "ReciboDeCaja{" +
                 "cedulaDeQuienPaga='" + cedulaDeQuienPaga + '\'' +
                 ", nombreDeQuienPaga='" + nombreDeQuienPaga + '\'' +
-                ", idFactura=" + idRecibo +
+                ", idFactura=" + idFacturaAsociada +
                 ", debitos=" + debitos +
                 ", creditos=" + creditos +
                 '}';

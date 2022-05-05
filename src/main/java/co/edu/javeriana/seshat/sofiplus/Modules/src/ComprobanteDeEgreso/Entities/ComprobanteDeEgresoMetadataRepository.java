@@ -8,14 +8,14 @@ import java.util.Date;
 
 public interface ComprobanteDeEgresoMetadataRepository extends MongoRepository<FacturaMetadata, String> {
 
-    ReciboDeCajaMetadata findById();
-    ReciboDeCajaMetadata findBymonto();
-    ReciboDeCajaMetadata findByFecha(Date fecha);
-    ReciboDeCajaMetadata findBySumaEnLetras(String sumaEnLetras);
-    ReciboDeCajaMetadata findByPorConceptoDe(boolean porConceptoDe);
-    ReciboDeCajaMetadata findByRecibidoDe(boolean recibidoDe);
-    ReciboDeCajaMetadata findByTipoDePago(boolean tipoDePago);
-    ReciboDeCajaMetadata findByEstado(boolean Estado);
+    ComprobanteDeEgresoMetadata findById();
+    ComprobanteDeEgresoMetadata findBymonto();
+    ComprobanteDeEgresoMetadata findByFecha(Date fecha);
+    ComprobanteDeEgresoMetadata findBySumaEnLetras(String sumaEnLetras);
+    ComprobanteDeEgresoMetadata findByPorConceptoDe(boolean porConceptoDe);
+    ComprobanteDeEgresoMetadata findByPagadoA(boolean pagadoA);
+    ComprobanteDeEgresoMetadata findByTipoDePago(boolean tipoDePago);
+    ComprobanteDeEgresoMetadata findByEstado(boolean Estado);
 
 //aca falta algo averiguar q es
 

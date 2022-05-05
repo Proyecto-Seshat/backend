@@ -11,20 +11,20 @@ public class ComprobanteDeEgresoMetadata {//viene lo publico
     public double monto;
     public String sumaEnLetras;
     public String porConceptoDe;
-    public String recibidoDe;
+    public String pagadoA;
     public Boolean tipoPago;//efectivo==0 (false) ,  consignacion==1 (true)
     public boolean estado;//activa==0 (false) ,  anulada==1 (true)
 
     public ComprobanteDeEgresoMetadata() {
     }
 
-    public ComprobanteDeEgresoMetadata(String id, Date fecha, double monto, String sumaEnLetras, String porConceptoDe, String recibidoDe, boolean tipoPago, boolean estado) {
+    public ComprobanteDeEgresoMetadata(String id, Date fecha, double monto, String sumaEnLetras, String porConceptoDe, String pagadoA, boolean tipoPago, boolean estado) {
         this.id = id;
         this.fecha = fecha;
         this.monto = monto;
         this.sumaEnLetras = sumaEnLetras;
         this.porConceptoDe = porConceptoDe;
-        this.recibidoDe = recibidoDe;
+        this.pagadoA = pagadoA;
         this.tipoPago = false;
         this.estado = false;
 
@@ -70,12 +70,12 @@ public class ComprobanteDeEgresoMetadata {//viene lo publico
         this.porConceptoDe = porConceptoDe;
     }
 
-    public String getRecibidoDe() {
-        return recibidoDe;
+    public String getPagadoA() {
+        return pagadoA;
     }
 
-    public void setRecibidoDe(String recibidoDe) {
-        this.recibidoDe = recibidoDe;
+    public void setPagadoA(String pagadoA) {
+        this.pagadoA = pagadoA;
     }
 
     public Boolean getTipoPago() {
@@ -102,7 +102,7 @@ public class ComprobanteDeEgresoMetadata {//viene lo publico
                 ", monto=" + monto +
                 ", sumaEnLetras='" + sumaEnLetras + '\'' +
                 ", porConceptoDe='" + porConceptoDe + '\'' +
-                ", recibidoDe='" + recibidoDe + '\'' +
+                ", recibidoDe='" + pagadoA + '\'' +
                 ", tipoPago=" + tipoPago +
                 ", estado=" + estado +
                 '}';

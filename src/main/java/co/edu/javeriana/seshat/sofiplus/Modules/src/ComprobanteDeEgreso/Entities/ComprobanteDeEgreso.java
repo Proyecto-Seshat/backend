@@ -2,45 +2,56 @@ package co.edu.javeriana.seshat.sofiplus.Modules.src.ComprobanteDeEgreso.Entitie
 
 public class ComprobanteDeEgreso {//aca viene lo privado
 
-    private String cedulaDeQuienPaga;
-    private String nombreDeQuienPaga;
-    private double idRecibo;
+    private String cedulaAQuienPaga;
+    private String nombreAQuienPaga;
+    private String idElaborador;
+    private String idAprovador;
     private double debitos;
     private double creditos;
+
 
     public ComprobanteDeEgreso() {
     }
 
-    public ComprobanteDeEgreso(String cedulaDeQuienPaga, String nombreDeQuienPaga, double idRecibo, double debitos, double creditos) {
-        this.cedulaDeQuienPaga = cedulaDeQuienPaga;
-        this.nombreDeQuienPaga = nombreDeQuienPaga;
-        this.idRecibo = idRecibo;
+    public ComprobanteDeEgreso(String cedulaAQuienPaga, String nombreAQuienPaga, String idElaborador, String idAprovador,double debitos, double creditos) {
+        this.cedulaAQuienPaga = cedulaAQuienPaga;
+        this.nombreAQuienPaga = nombreAQuienPaga;
+        this.idElaborador = idElaborador;
+        this.idAprovador = idAprovador;
         this.debitos = debitos;
         this.creditos = creditos;
     }
 
-    public String getCedulaDeQuienPaga() {
-        return cedulaDeQuienPaga;
+    public String getCedulaAQuienPaga() {
+        return cedulaAQuienPaga;
     }
 
-    public void setCedulaDeQuienPaga(String cedulaDeQuienPaga) {
-        this.cedulaDeQuienPaga = cedulaDeQuienPaga;
+    public void setCedulaAQuienPaga(String cedulaAQuienPaga) {
+        this.cedulaAQuienPaga = cedulaAQuienPaga;
     }
 
-    public double getIdRecibo() {
-        return idRecibo;
+    public String getNombreAQuienPaga() {
+        return nombreAQuienPaga;
     }
 
-    public void setIdRecibo(double idRecibo) {
-        this.idRecibo = idRecibo;
+    public void setNombreAQuienPaga(String nombreAQuienPaga) {
+        this.nombreAQuienPaga = nombreAQuienPaga;
     }
 
-    public String getNombreDeQuienPaga() {
-        return nombreDeQuienPaga;
+    public String getIdElaborador() {
+        return idElaborador;
     }
 
-    public void setNombreDeQuienPaga(String nombreDeQuienPaga) {
-        this.nombreDeQuienPaga = nombreDeQuienPaga;
+    public void setIdElaborador(String idElaborador) {
+        this.idElaborador = idElaborador;
+    }
+
+    public String getIdAprovador() {
+        return idAprovador;
+    }
+
+    public void setIdAprovador(String idAprovador) {
+        this.idAprovador = idAprovador;
     }
 
     public double getDebitos() {
@@ -61,14 +72,13 @@ public class ComprobanteDeEgreso {//aca viene lo privado
 
     @Override
     public String toString() {
-        return "ReciboDeCaja{" +
-                "cedulaDeQuienPaga='" + cedulaDeQuienPaga + '\'' +
-                ", nombreDeQuienPaga='" + nombreDeQuienPaga + '\'' +
-                ", idFactura=" + idRecibo +
+        return "ComprobanteDeEgreso{" +
+                "cedulaAQuienPaga='" + cedulaAQuienPaga + '\'' +
+                ", nombreAQuienPaga='" + nombreAQuienPaga + '\'' +
+                ", idElaborador='" + idElaborador + '\'' +
+                ", idAprovador='" + idAprovador + '\'' +
                 ", debitos=" + debitos +
                 ", creditos=" + creditos +
                 '}';
     }
-
-
 }
