@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Date;
 
-public interface ComprobanteDeEgresoMetadataRepository extends MongoRepository<FacturaMetadata, String> {
+public interface ComprobanteDeEgresoMetadataRepository extends MongoRepository<ComprobanteDeEgresoMetadata, String> {
 
     ComprobanteDeEgresoMetadata findById();
     ComprobanteDeEgresoMetadata findBymonto();
@@ -14,7 +14,7 @@ public interface ComprobanteDeEgresoMetadataRepository extends MongoRepository<F
     ComprobanteDeEgresoMetadata findBySumaEnLetras(String sumaEnLetras);
     ComprobanteDeEgresoMetadata findByPorConceptoDe(boolean porConceptoDe);
     ComprobanteDeEgresoMetadata findByPagadoA(boolean pagadoA);
-    ComprobanteDeEgresoMetadata findByTipoDePago(boolean tipoDePago);
+    ComprobanteDeEgresoMetadata findByTipoPago(boolean tipoDePago);
     ComprobanteDeEgresoMetadata findByEstado(boolean Estado);
 
 //aca falta algo averiguar q es

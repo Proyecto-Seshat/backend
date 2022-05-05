@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Date;
 
-public interface ReciboDeCajaMetadataRepository extends MongoRepository<FacturaMetadata, String> {
+public interface ReciboDeCajaMetadataRepository extends MongoRepository<ReciboDeCajaMetadata, String> {
 
     ReciboDeCajaMetadata findById();
     ReciboDeCajaMetadata findBymonto();
@@ -13,7 +13,7 @@ public interface ReciboDeCajaMetadataRepository extends MongoRepository<FacturaM
     ReciboDeCajaMetadata findBySumaEnLetras(String sumaEnLetras);
     ReciboDeCajaMetadata findByPorConceptoDe(boolean porConceptoDe);
     ReciboDeCajaMetadata findByRecibidoDe(boolean recibidoDe);
-    ReciboDeCajaMetadata findByTipoDePago(boolean tipoDePago);
+    ReciboDeCajaMetadata findByTipoPago(boolean tipoDePago);
     ReciboDeCajaMetadata findByEstado(boolean Estado);
 
 //aca falta algo averiguar q es
