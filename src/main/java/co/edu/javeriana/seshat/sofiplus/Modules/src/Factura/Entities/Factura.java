@@ -3,10 +3,10 @@ package co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities;
 import java.util.List;
 
 public class Factura {//aca viene lo privado
-    String clienteCedula;
-    double total;
-    List<CarritoItem> carrito;
-    public String nombreCliente;
+    private String clienteCedula;
+    private double total;
+    private List<CarritoItem> carrito;
+    private  String nombreCliente;
 
     public Factura() {
     }
