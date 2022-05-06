@@ -11,10 +11,11 @@ public class Carrito {
     public Carrito() {
     }
 
+    //agregar al carrito el item
     public Carrito(List<Map<String, Object>> carrito) {
         this.carrito = new ArrayList<>();
         for (Map<String, Object> item : carrito) {
-            this.carrito.add(new CarritoItem((String) item.get("nombre"), (int) item.get("cantidad"),(int) item.get("descuento"), (int) item.get("descuento")));
+            this.carrito.add(new CarritoItem((String) item.get("nombre"), (int) item.get("cantidad"),(int) item.get("descuento"), (int) item.get("idItem"), (boolean) item.get("tipo")));
         }
     }
 

@@ -12,21 +12,23 @@ public class DevolucionMetadata    {
     public Date fechaVencimiento;
     public List<CarritoItem>    carrito;
     public Date fecha;
-    public String nombreCliente;
     public Boolean tipoPago;
+
+    public Boolean estado;
     public DevolucionMetadata() {
     }
 
 
 
 
-    public DevolucionMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito) {
+    public DevolucionMetadata(String id, double total, Date fechaVencimiento, List<CarritoItem> carrito, Date fecha,  Boolean tipoPago, boolean estado) {
         this.id = id;
         this.total = total;
         this.fechaVencimiento = fechaVencimiento;
         this.carrito = carrito;
         this.fecha = fecha;
-        this.tipoPago = tipoPago;
+        this.tipoPago = false;
+        this.estado = false;
     }
 
     public String getId() {
@@ -69,14 +71,6 @@ public class DevolucionMetadata    {
         this.fecha = fecha;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
     public Boolean getTipoPago() {
         return tipoPago;
     }
@@ -85,6 +79,13 @@ public class DevolucionMetadata    {
         this.tipoPago = tipoPago;
     }
 
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
 
     @Override
     public String toString() {
@@ -94,8 +95,8 @@ public class DevolucionMetadata    {
                 ", fechaVencimiento=" + fechaVencimiento +
                 ", carrito=" + carrito +
                 ", fecha=" + fecha +
-                ", nombreCliente='" + nombreCliente + '\'' +
                 ", tipoPago=" + tipoPago +
+                ", estado=" + estado +
                 '}';
     }
 }
