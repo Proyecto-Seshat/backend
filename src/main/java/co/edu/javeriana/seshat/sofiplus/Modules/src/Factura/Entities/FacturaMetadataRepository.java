@@ -10,7 +10,7 @@ public interface FacturaMetadataRepository extends MongoRepository<FacturaMetada
     FacturaMetadata findById();
     FacturaMetadata findByFechaVencimiento(Date fechaVencimiento);
     FacturaMetadata findByFecha(Date fecha);
-    FacturaMetadata findByTotal(double total);
+    //FacturaMetadata findByTotal(double total);
     FacturaMetadata findByTipoPago(boolean tipoPago);
     FacturaMetadata findByEstado(boolean Estado);
 

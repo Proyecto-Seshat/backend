@@ -8,6 +8,7 @@ public class ComprobanteDeEgreso {//aca viene lo privado
     private String idAprovador;
     private double debitos;
     private double creditos;
+    private boolean aprovado; //booleano aprovado si==true, no ==false
 
 
     public ComprobanteDeEgreso() {
@@ -20,6 +21,7 @@ public class ComprobanteDeEgreso {//aca viene lo privado
         this.idAprovador = idAprovador;
         this.debitos = debitos;
         this.creditos = creditos;
+        this.aprovado = false;
     }
 
     public String getCedulaAQuienPaga() {
@@ -68,6 +70,14 @@ public class ComprobanteDeEgreso {//aca viene lo privado
 
     public void setCreditos(double creditos) {
         this.creditos = creditos;
+    }
+
+    public boolean isAprovado() {
+        return aprovado;
+    }
+
+    public void setAprovado(boolean aprovado) {
+        this.aprovado = aprovado;
     }
 
     @Override

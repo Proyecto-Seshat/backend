@@ -35,7 +35,7 @@ public class TestFactura implements ModuleRunnable {
         ReaEntity reaEntity = new ReaEntity();
         reaEntity.setIdEvento(eventoId.toString());
         reaEntity.setNitFamiempresa((String) params.get("nitFamiempresa"));
-        reaEntity.setIdRecurso((int) params.get("idRecurso"));
+        reaEntity.setIdRecurso((String) params.get("idRecurso"));
         reaEntity.setAfectacion(Double.parseDouble(params.get("afectacion").toString()));
         ReaEntity[] details = new ReaEntity[]{reaEntity};
         broker.registerRea(evento, details);

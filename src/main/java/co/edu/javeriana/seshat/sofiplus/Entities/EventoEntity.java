@@ -16,6 +16,18 @@ public class EventoEntity {
     private String agenteInterno;
     private String agenteExterno;
 
+    public EventoEntity() {
+    }
+
+    public EventoEntity(String idEvento, String nitFamiempresa, Timestamp fecha, String tipoEvento, String agenteInterno, String agenteExterno) {
+        this.idEvento = idEvento;
+        this.nitFamiempresa = nitFamiempresa;
+        this.fecha = fecha;
+        this.tipoEvento = tipoEvento;
+        this.agenteInterno = agenteInterno;
+        this.agenteExterno = agenteExterno;
+    }
+
     public String getIdEvento() {
         return idEvento;
     }

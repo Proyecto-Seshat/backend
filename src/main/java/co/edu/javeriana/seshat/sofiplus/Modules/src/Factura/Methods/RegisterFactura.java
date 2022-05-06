@@ -1,5 +1,6 @@
 package co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Methods;
 
+import co.edu.javeriana.seshat.sofiplus.Entities.EventoEntity;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.Carrito;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.Factura;
@@ -17,6 +18,12 @@ public class RegisterFactura implements ModuleRunnable {
     FacturaMetadataRepository repo;
     @Override
     public Object run(HashMap<String, Object> params) {
+        UUID eventoId = UUID.randomUUID();
+        EventoEntity evento = new EventoEntity();
+        evento.setIdEvento(eventoId.toString());
+        evento.setNitFamiempresa((String) params.get("nitFamiempresa"));
+
+
         Carrito carrito = new Carrito((List<Map<String, Object>>) params.get("carrito"));
         Factura factura = new Factura((String) params.get("clienteCedula"), Double.parseDouble(params.get("total").toString()), carrito.getCarrito(), (String) params.get("nombreCliente"));
         FacturaMetadata meta = new FacturaMetadata();
@@ -24,9 +31,7 @@ public class RegisterFactura implements ModuleRunnable {
         meta.setTotal(factura.getTotal());
         meta.setCarrito(factura.getCarrito());
 
-
-//probar si al fin sirve o no lo de la fecha actual
-        SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatter= new SimpleDateFormat("DD/MM/YYYY");
         Date date = new Date(System.currentTimeMillis());
         System.out.println(formatter.format(date));
         meta.setFecha(date);

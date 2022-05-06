@@ -11,7 +11,7 @@ public class ReaEntity {
     @Id
     private String nitFamiempresa;
     @Id
-    private int idRecurso;
+    private String idRecurso;
     private double afectacion;
 
     public String getIdEvento() {
@@ -30,11 +30,11 @@ public class ReaEntity {
         this.nitFamiempresa = nitFamiempresa;
     }
 
-    public int getIdRecurso() {
+    public String getIdRecurso() {
         return idRecurso;
     }
 
-    public void setIdRecurso(int idRecurso) {
+    public void setIdRecurso(String idRecurso) {
         this.idRecurso = idRecurso;
     }
 

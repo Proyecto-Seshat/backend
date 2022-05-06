@@ -86,7 +86,7 @@ public class ComprobanteDeEgresoMetadata {//viene lo publico
         this.tipoPago = tipoPago;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
