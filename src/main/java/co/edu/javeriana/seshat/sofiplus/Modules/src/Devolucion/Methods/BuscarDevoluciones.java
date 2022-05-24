@@ -3,6 +3,7 @@ package co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.Methods;
 import co.edu.javeriana.seshat.sofiplus.DataFacade.DataBroker;
 import co.edu.javeriana.seshat.sofiplus.Entities.EventoEntity;
 import co.edu.javeriana.seshat.sofiplus.Kernel.*;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.Entities.ParametrosBusquedaDevolucion;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.FrontEntities.Devolucion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+@ModuleMethod
 public class BuscarDevoluciones implements ModuleRunnable {
 
     @Autowired

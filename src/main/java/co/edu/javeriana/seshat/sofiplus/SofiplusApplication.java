@@ -1,6 +1,8 @@
 package co.edu.javeriana.seshat.sofiplus;
 
 import co.edu.javeriana.seshat.sofiplus.Modules.BusinessModule;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
+import org.reflections.Reflections;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Objects;
+import java.util.Set;
 
 @SpringBootApplication
 @EnableMongoRepositories
@@ -27,18 +30,11 @@ public class SofiplusApplication {
     @Bean
     public CommandLineRunner getRunner(ApplicationContext ctx) {
         return (args) -> {
-            try {
-                File f = new File("./src/main/java/co/edu/javeriana/seshat/sofiplus/Modules/src");
-                for (File module : Objects.requireNonNull(f.listFiles())) {
-                    URL[] cp = {module.toURI().toURL()};
-                    try (URLClassLoader urlcl = new URLClassLoader(cp)) {
-                        Class<? extends BusinessModule> moduleClass = (Class<? extends BusinessModule>) urlcl.loadClass("co.edu.javeriana.seshat.sofiplus.Modules.src." + module.getName() + ".Module" + module.getName());
-                        ctx.getBean(moduleClass).init();
-                    }
-                }
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
+            Reflections reflections = new Reflections("co.edu.javeriana.seshat.sofiplus.Modules.src");
+            Set<Class<? extends BusinessModule>> modules = reflections.getSubTypesOf(BusinessModule.class);
+            modules.forEach(module -> {
+                ctx.getBean(module).init();
+            });
         };
     }
 

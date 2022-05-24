@@ -2,6 +2,7 @@ package co.edu.javeriana.seshat.sofiplus.Modules.src.ComprobanteEgreso.Methods;
 
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.ComprobanteEgreso.Entities.ComprobanteDeEgresoMetadataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 
+@ModuleMethod
 public class AnularComprobanteDeEgreso implements ModuleRunnable {
     @PersistenceContext
     private EntityManager em;

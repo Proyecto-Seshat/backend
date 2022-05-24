@@ -2,7 +2,9 @@ package co.edu.javeriana.seshat.sofiplus.Modules.src.ReciboDeCaja.Methods;
 
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 
+@ModuleMethod
 public class GetReciboDeCaja implements ModuleRunnable {
     @Override
     public Object run(RequestMessage message) {

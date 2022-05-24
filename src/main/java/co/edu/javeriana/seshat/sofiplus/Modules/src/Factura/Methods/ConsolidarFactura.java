@@ -6,6 +6,7 @@ import co.edu.javeriana.seshat.sofiplus.Entities.PersonaEntity;
 import co.edu.javeriana.seshat.sofiplus.Kernel.AuthorizationRequiredException;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.FacturaMetadata;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.FacturaMetadataRepository;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.FrontEntities.Factura;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
 
+@ModuleMethod
 public class ConsolidarFactura implements ModuleRunnable {
 
     @Autowired

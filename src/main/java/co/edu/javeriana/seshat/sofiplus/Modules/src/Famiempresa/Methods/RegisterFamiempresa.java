@@ -5,8 +5,10 @@ import co.edu.javeriana.seshat.sofiplus.Entities.FamiempresaEntity;
 import co.edu.javeriana.seshat.sofiplus.FrontEntities.FamiEmpresa;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@ModuleMethod
 public class RegisterFamiempresa implements ModuleRunnable {
 
     @Autowired

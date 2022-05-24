@@ -4,11 +4,13 @@ import co.edu.javeriana.seshat.sofiplus.DataFacade.DataBroker;
 import co.edu.javeriana.seshat.sofiplus.Entities.EventoEntity;
 import co.edu.javeriana.seshat.sofiplus.Entities.EventoEntityPK;
 import co.edu.javeriana.seshat.sofiplus.Kernel.*;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.FacturaMetadataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
+@ModuleMethod
 public class BuscarFactura implements ModuleRunnable {
 
     @Autowired

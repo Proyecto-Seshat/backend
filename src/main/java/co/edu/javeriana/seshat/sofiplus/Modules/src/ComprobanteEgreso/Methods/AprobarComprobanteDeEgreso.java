@@ -2,10 +2,12 @@ package co.edu.javeriana.seshat.sofiplus.Modules.src.ComprobanteEgreso.Methods;
 
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+@ModuleMethod
 public class AprobarComprobanteDeEgreso implements ModuleRunnable {
     @PersistenceContext
     private EntityManager em;

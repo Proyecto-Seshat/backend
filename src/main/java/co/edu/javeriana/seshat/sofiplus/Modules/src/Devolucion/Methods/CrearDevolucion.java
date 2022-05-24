@@ -9,6 +9,7 @@ import co.edu.javeriana.seshat.sofiplus.Kernel.AuthorizationRequiredException;
 import co.edu.javeriana.seshat.sofiplus.Kernel.DateFromFront;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
+import co.edu.javeriana.seshat.sofiplus.Modules.ModuleMethod;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.Entities.DevolucionMetadata;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.Entities.DevolucionMetadataRepository;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.Devolucion.FrontEntities.Devolucion;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.sql.Timestamp;
 import java.text.ParseException;
 
+@ModuleMethod
 public class CrearDevolucion implements ModuleRunnable {
 
     @Autowired
