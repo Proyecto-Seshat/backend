@@ -1,7 +1,9 @@
 package co.edu.javeriana.seshat.sofiplus.Modules.src.ReciboDeCaja.Methods;
 
+import co.edu.javeriana.seshat.sofiplus.FrontEntities.ReciboCaja;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
 
+import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.ReciboDeCaja.Entities.ReciboDeCajaMetadataRepository;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.ReciboDeCaja.Entities.ReciboDeCaja;
 import co.edu.javeriana.seshat.sofiplus.Modules.src.ReciboDeCaja.Entities.ReciboDeCajaMetadata;
@@ -19,19 +21,17 @@ public class RegisterReciboDeCaja implements ModuleRunnable {
     @Autowired
     ReciboDeCajaMetadataRepository repo;
     @Override
-    public Object run(HashMap<String, Object> params) {
-        ReciboDeCaja reciboDeCaja = new ReciboDeCaja((String) params.get("cedulaDeQuienPaga"), (String) params.get("nombreDeQuienPaga"), Double.parseDouble(params.get("idRecibo").toString()), Double.parseDouble(params.get("debitos").toString()), Double.parseDouble(params.get("creditos").toString()) );
-       ReciboDeCajaMetadata meta = new ReciboDeCajaMetadata();
-
-        meta.setMonto(meta.getMonto());
-
-//probar si al fin sirve o no lo de la fecha actual
-        SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
-        Date date = new Date(System.currentTimeMillis());
-        System.out.println(formatter.format(date));
-        meta.setFecha(date);
-
-        //repo.save(meta);
+    public Object run(RequestMessage message) {
+        ReciboCaja recibo = (ReciboCaja) message.getParams();
+        //TODO: Implementar la logica de para ingresar a REA
+        ReciboDeCajaMetadata meta = new ReciboDeCajaMetadata();
+        meta.setId(recibo.getId());
+        meta.setSuma(recibo.getSuma());
+        meta.setSumaEnLetras(recibo.getSumaLetras());
+        meta.setDescripcion(recibo.getDescripcion());
+        meta.setDebito(recibo.getDebito());
+        meta.setCredito(recibo.getCredito());
+        repo.save(meta);
         return "OK";
 
     }

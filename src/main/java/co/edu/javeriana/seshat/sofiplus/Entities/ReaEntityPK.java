@@ -13,7 +13,7 @@ public class ReaEntityPK implements Serializable {
     @Id
     private String nitFamiempresa;
     @Id
-    private int idRecurso;
+    private String idRecurso;
 
     public String getIdEvento() {
         return idEvento;
@@ -31,11 +31,11 @@ public class ReaEntityPK implements Serializable {
         this.nitFamiempresa = nitFamiempresa;
     }
 
-    public int getIdRecurso() {
+    public String getIdRecurso() {
         return idRecurso;
     }
 
-    public void setIdRecurso(int idRecurso) {
+    public void setIdRecurso(String idRecurso) {
         this.idRecurso = idRecurso;
     }
 

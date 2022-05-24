@@ -1,13 +1,12 @@
 package co.edu.javeriana.seshat.sofiplus.Modules.src.ReciboDeCaja.Methods;
 
-import co.edu.javeriana.seshat.sofiplus.Entities.FacturaEntity;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
-
-import java.util.HashMap;
+import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
 
 public class GetReciboDeCaja implements ModuleRunnable {
     @Override
-    public Object run(HashMap<String, Object> params) {
-        return new FacturaEntity((String) params.get("clienteCedula"), (int) params.get("total"));// porque pasa esto ?
+    public Object run(RequestMessage message) {
+        //TODO: Implementar la logica de recuperacion del recibo de caja desde REA
+        return "OK";
     }
 }

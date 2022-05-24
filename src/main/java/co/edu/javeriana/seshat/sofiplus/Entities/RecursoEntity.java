@@ -7,17 +7,17 @@ import java.util.Objects;
 @Entity
 public class RecursoEntity {
     @Id
-    private int idRecurso;
+    private String idRecurso;
     private String cuenta;
 
     public RecursoEntity() {
     }
 
-    public int getIdRecurso() {
+    public String getIdRecurso() {
         return idRecurso;
     }
 
-    public void setIdRecurso(int idRecurso) {
+    public void setIdRecurso(String idRecurso) {
         this.idRecurso = idRecurso;
     }
 

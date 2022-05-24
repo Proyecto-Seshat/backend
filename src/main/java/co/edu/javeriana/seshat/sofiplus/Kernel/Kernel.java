@@ -12,8 +12,8 @@ public class Kernel {
         index.put(uri, method);
     }
 
-    public static KernelProxy processRequest(String uri, HashMap<String, Object> params) {
+    public static KernelProxy processRequest(String uri, RequestMessage message) {
         ModuleRunnable method = SpringApplicationContext.getBean(index.get(uri));
-        return new KernelProxy(method, params);
+        return new KernelProxy(method, message);
     }
 }

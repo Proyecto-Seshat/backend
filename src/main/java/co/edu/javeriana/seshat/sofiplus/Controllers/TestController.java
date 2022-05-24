@@ -1,16 +1,16 @@
 package co.edu.javeriana.seshat.sofiplus.Controllers;
 
-import co.edu.javeriana.seshat.sofiplus.Entities.FacturaEntity;
 import co.edu.javeriana.seshat.sofiplus.Entities.RecursoEntity;
-import co.edu.javeriana.seshat.sofiplus.FrontEntities.Cliente;
+import co.edu.javeriana.seshat.sofiplus.Modules.src.Tercero.FrontEntities.Cliente;
+import co.edu.javeriana.seshat.sofiplus.Kernel.AuthorizationRequiredException;
 import co.edu.javeriana.seshat.sofiplus.Kernel.Kernel;
+import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
 import co.edu.javeriana.seshat.sofiplus.Repositories.PersonaEntityRepository;
 import co.edu.javeriana.seshat.sofiplus.Repositories.RecursoEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 public class TestController {
@@ -20,10 +20,6 @@ public class TestController {
     @Autowired
     private PersonaEntityRepository personaRepo;
 
-    @PostMapping("/factura")
-    public FacturaEntity getFactura(@RequestBody HashMap<String, Object> params) {
-        return (FacturaEntity) Kernel.processRequest("module.factura.getFactura", params).run();
-    }
 
     @PostMapping("/test")
     public RecursoEntity test(@RequestBody RecursoEntity recurso) {
@@ -31,31 +27,31 @@ public class TestController {
     }
 
     @PostMapping("/registrarCliente")
-    public String registrarCliente(@RequestBody HashMap<String, Object> cliente) {
-        return (String) Kernel.processRequest("module.terceros.registerCliente", cliente).run();
+    public String registrarCliente(@RequestBody HashMap<String, Object> cliente) throws AuthorizationRequiredException {
+        return (String) Kernel.processRequest("module.terceros.registerCliente", new RequestMessage(cliente)).run();
     }
 
     @GetMapping("/getCliente")
-    public Cliente getCliente(@RequestParam String cedula){
+    public Cliente getCliente(@RequestParam String cedula) throws AuthorizationRequiredException {
         HashMap<String, Object> params = new HashMap<>();
         params.put("cedula", cedula);
-        return (Cliente) Kernel.processRequest("module.teceros.getCliente", params).run();
+        return (Cliente) Kernel.processRequest("module.teceros.getCliente", new RequestMessage(params)).run();
     }
 
     @GetMapping("/trollCliente")
-    public Cliente trollCliente(@RequestParam String cedula){
+    public Cliente trollCliente(@RequestParam String cedula) throws AuthorizationRequiredException {
         HashMap<String, Object> params = new HashMap<>();
         params.put("cedula", cedula);
-        return (Cliente) Kernel.processRequest("module.troll.trollAgent", params).run();
+        return (Cliente) Kernel.processRequest("module.troll.trollAgent", new RequestMessage(params)).run();
     }
 
     @PostMapping("/postFactura")
-    public String postFactura(@RequestBody HashMap<String, Object> body){
-        return (String) Kernel.processRequest("module.factura.registerFactura", body).run();
+    public String postFactura(@RequestBody HashMap<String, Object> body) throws AuthorizationRequiredException {
+        return (String) Kernel.processRequest("module.factura.registerFactura", new RequestMessage(body)).run();
     }
 
     @PostMapping("/testFactura")
-    public String testFactura(@RequestBody HashMap<String, Object> body){
-        return (String) Kernel.processRequest("module.factura.testFactura", body).run();
+    public String testFactura(@RequestBody HashMap<String, Object> body) throws AuthorizationRequiredException {
+        return (String) Kernel.processRequest("module.factura.testFactura", new RequestMessage(body)).run();
     }
 }

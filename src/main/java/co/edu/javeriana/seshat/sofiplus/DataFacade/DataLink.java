@@ -1,6 +1,8 @@
 package co.edu.javeriana.seshat.sofiplus.DataFacade;
 
 import co.edu.javeriana.seshat.sofiplus.Entities.*;
+import co.edu.javeriana.seshat.sofiplus.Modules.src.Tercero.FrontEntities.Cliente;
+import co.edu.javeriana.seshat.sofiplus.Modules.src.Inventario.Entities.ItemEntityRepository;
 import co.edu.javeriana.seshat.sofiplus.Repositories.*;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +10,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.Arrays;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -16,15 +18,18 @@ import java.util.Optional;
 @Component
 public class DataLink implements DataBroker {
     @Resource
-    private EventoEntityRepository eventoRepo;
+    private EventoEntityRepository eventoEntityRepository;
 
     @Resource
-    private ReaEntityRepository reaRepo;
-    @Resource
-    private PersonaEntityRepository personaRepo;
+    private ConsolidadoEntityRepository consolidadoEntityRepository;
 
     @Resource
-    private ItemEntityRepository itemRepo;
+    private ReaEntityRepository reaEntityRepository;
+    @Resource
+    private PersonaEntityRepository personaEntityRepository;
+
+    @Resource
+    private ItemEntityRepository itemEntityRepository;
 
     @Resource
     private FamiempresaEntityRepository famiempresaEntityRepository;
@@ -32,12 +37,31 @@ public class DataLink implements DataBroker {
     @Resource
     private RecursoEntityRepository recursoEntityRepository;
 
+    @Resource
+    private UsuarioEntityRepository usuarioEntityRepository;
+
     @PersistenceContext
     private EntityManager em;
 
+
     @Override
-    public ReaConsolidated requestRea(EventoEntityPK evento) {
-        Optional<EventoEntity> eventoProspect = eventoRepo.findById(evento);
+    public Optional<EventoEntity> requerirEvento(EventoEntityPK pk) {
+        return eventoEntityRepository.findById(pk);
+    }
+
+    @Override
+    public List<EventoEntity> requerirEventos(String nitFamiempresa, String tipo) {
+        return eventoEntityRepository.findAllByNitFamiempresaAndTipoEvento(nitFamiempresa, tipo);
+    }
+
+    @Override
+    public List<EventoEntity> requerirEventosPorFecha(String nitFamiempresa, String tipo, Date fecha) {
+        return eventoEntityRepository.findAllByNitFamiempresaAndTipoEventoAndFecha(nitFamiempresa, tipo, fecha);
+    }
+
+    @Override
+    public ReaConsolidated requerirRea(EventoEntityPK evento) {
+        Optional<EventoEntity> eventoProspect = eventoEntityRepository.findById(evento);
         if (eventoProspect.isEmpty()) {
             return null;
         }
@@ -48,33 +72,33 @@ public class DataLink implements DataBroker {
     }
 
     @Override
-    public void registerRea(EventoEntity evento, ReaEntity[] detalles) {
+    public void registrarRea(EventoEntity evento, List<ReaEntity> detalles) {
         try {
-            eventoRepo.save(evento);
-            reaRepo.saveAll(Arrays.asList(detalles));
+            eventoEntityRepository.save(evento);
+            reaEntityRepository.saveAll(detalles);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public HashMap<String, Object> requestMetadata(String key) {
+    public HashMap<String, Object> requerirMetadata(String key) {
         return null;
     }
 
     @Override
-    public void registerMetadata(String key, HashMap<String, Object> document) {
+    public void registrarMetadata(String key, HashMap<String, Object> document) {
 
     }
 
     @Override
-    public void registerAgent(PersonaEntity persona) {
-        this.personaRepo.save(persona);
+    public void registrarAgente(PersonaEntity persona) {
+        this.personaEntityRepository.save(persona);
     }
 
     @Override
-    public PersonaEntity requestAgent(String id) {
-        Optional<PersonaEntity> persona = personaRepo.findById(id);
+    public PersonaEntity requerirAgente(String id) {
+        Optional<PersonaEntity> persona = personaEntityRepository.findById(id);
         if (persona.isEmpty()) {
             return null;
         }
@@ -82,23 +106,45 @@ public class DataLink implements DataBroker {
     }
 
     @Override
-    public ItemEntityPK registerItem(ItemEntity item) {
-        itemRepo.save(item);
-        ItemEntityPK pk = new ItemEntityPK();
-        pk.setNitFamiempresa(item.getNitFamiempresa());
-        pk.setCodigo(item.getCodigo());
-        return pk;
-    }
-
-    @Override
-    public String registerFamiempresa(FamiempresaEntity famiempresa) {
+    public String registrarFamiempresa(FamiempresaEntity famiempresa) {
         famiempresaEntityRepository.save(famiempresa);
         return famiempresa.getNit();
     }
 
     @Override
-    public int registerRecurso(RecursoEntity recurso) {
+    public String registrarRecurso(RecursoEntity recurso) {
         recursoEntityRepository.save(recurso);
         return recurso.getIdRecurso();
+    }
+
+
+    @Override
+    public Optional<UsuarioEntity> requerirUsuarioPorEmail(String email) {
+        return usuarioEntityRepository.findUsuarioEntityByEmail(email);
+    }
+
+    @Override
+    public Optional<UsuarioEntity> requerirUsuario(String id) {
+        return usuarioEntityRepository.findById(id);
+    }
+
+    @Override
+    public UsuarioEntity registrarUsuario(UsuarioEntity usuario) {
+        return usuarioEntityRepository.save(usuario);
+    }
+
+    @Override
+    public Cliente buscarCliente(String id) {
+        return null;
+    }
+
+    @Override
+    public void registrarConsolidados(List<ConsolidadoEntity> consolidados) {
+        consolidadoEntityRepository.saveAll(consolidados);
+    }
+
+    @Override
+    public Optional<ConsolidadoEntity> requerirConsolidado(ConsolidadoEntityPK pk) {
+        return consolidadoEntityRepository.findById(pk);
     }
 }

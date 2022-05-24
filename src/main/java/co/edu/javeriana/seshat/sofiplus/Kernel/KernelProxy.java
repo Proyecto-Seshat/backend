@@ -1,19 +1,20 @@
 package co.edu.javeriana.seshat.sofiplus.Kernel;
 
+import co.edu.javeriana.seshat.sofiplus.Security.JWTToken;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
 public class KernelProxy {
     ModuleRunnable method;
-    HashMap<String, Object> params;
+    RequestMessage message;
 
-    public KernelProxy(ModuleRunnable method, HashMap<String, Object> params) {
+    public KernelProxy(ModuleRunnable method, RequestMessage message) {
         this.method = method;
-        this.params = params;
+        this.message = message;
     }
 
-    public Object run() {
-        return this.method.run(this.params);
+    public Object run() throws AuthorizationRequiredException {
+        return this.method.run(this.message);
     }
 }

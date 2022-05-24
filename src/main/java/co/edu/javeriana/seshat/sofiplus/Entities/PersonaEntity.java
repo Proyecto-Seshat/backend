@@ -7,8 +7,17 @@ import java.util.Objects;
 public class PersonaEntity {
     @Id
     private String idPersona;
-    private String nombres;
-    private String apellidos;
+    private String nombre;
+    private String telefono;
+
+    public PersonaEntity() {
+    }
+
+    public PersonaEntity(String idPersona, String nombre, String telefono) {
+        this.idPersona = idPersona;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
 
     public String getIdPersona() {
         return idPersona;
@@ -18,32 +27,19 @@ public class PersonaEntity {
         this.idPersona = idPersona;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PersonaEntity that = (PersonaEntity) o;
-        return Objects.equals(idPersona, that.idPersona) && Objects.equals(nombres, that.nombres) && Objects.equals(apellidos, that.apellidos);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idPersona, nombres, apellidos);
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

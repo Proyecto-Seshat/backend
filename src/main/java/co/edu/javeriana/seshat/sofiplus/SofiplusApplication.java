@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -15,7 +17,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Objects;
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
 @EnableMongoRepositories
 public class SofiplusApplication {
     public static void main(String[] args) {
@@ -36,6 +38,16 @@ public class SofiplusApplication {
                 }
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
+            }
+        };
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*");
             }
         };
     }

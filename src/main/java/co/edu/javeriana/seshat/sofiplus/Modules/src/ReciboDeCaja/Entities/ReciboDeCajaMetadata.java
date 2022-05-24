@@ -1,6 +1,5 @@
 package co.edu.javeriana.seshat.sofiplus.Modules.src.ReciboDeCaja.Entities;
 
-import co.edu.javeriana.seshat.sofiplus.Modules.src.Factura.Entities.CarritoItem;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -9,27 +8,22 @@ import java.util.List;
 public class ReciboDeCajaMetadata {//viene lo publico
     @Id
     public String id;
-    public Date fecha;
-    public double monto;
+    public double suma;
     public String sumaEnLetras;
-    public String porConceptoDe;
-    public String recibidoDe;
-    public Boolean tipoPago;//efectivo==0 (false) ,  consignacion==1 (true)
-    public boolean estado;//activa==0 (false) ,  anulada==1 (true)
+    public String descripcion;
+    public double debito;
+    public double credito;
 
     public ReciboDeCajaMetadata() {
     }
 
-    public ReciboDeCajaMetadata(String id, Date fecha, double monto, String sumaEnLetras, String porConceptoDe, String recibidoDe, boolean tipoPago, boolean estado) {
+    public ReciboDeCajaMetadata(String id, double suma, String sumaEnLetras, String descripcion, double debito, double credito) {
         this.id = id;
-        this.fecha = fecha;
-        this.monto = monto;
+        this.suma = suma;
         this.sumaEnLetras = sumaEnLetras;
-        this.porConceptoDe = porConceptoDe;
-        this.recibidoDe = recibidoDe;
-        this.tipoPago = false;
-        this.estado = false;
-
+        this.descripcion = descripcion;
+        this.debito = debito;
+        this.credito = credito;
     }
 
     public String getId() {
@@ -40,20 +34,12 @@ public class ReciboDeCajaMetadata {//viene lo publico
         this.id = id;
     }
 
-    public double getMonto() {
-        return monto;
+    public double getSuma() {
+        return suma;
     }
 
-    public void setMonto(double monto) {
-        this.monto = monto;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setSuma(double suma) {
+        this.suma = suma;
     }
 
     public String getSumaEnLetras() {
@@ -64,49 +50,27 @@ public class ReciboDeCajaMetadata {//viene lo publico
         this.sumaEnLetras = sumaEnLetras;
     }
 
-    public String getPorConceptoDe() {
-        return porConceptoDe;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setPorConceptoDe(String porConceptoDe) {
-        this.porConceptoDe = porConceptoDe;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getRecibidoDe() {
-        return recibidoDe;
+    public double getDebito() {
+        return debito;
     }
 
-    public void setRecibidoDe(String recibidoDe) {
-        this.recibidoDe = recibidoDe;
+    public void setDebito(double debito) {
+        this.debito = debito;
     }
 
-    public Boolean getTipoPago() {
-        return tipoPago;
+    public double getCredito() {
+        return credito;
     }
 
-    public void setTipoPago(Boolean tipoPago) {
-        this.tipoPago = tipoPago;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    @Override
-    public String toString() {
-        return "ReciboDeCajaMetadata{" +
-                "id='" + id + '\'' +
-                ", fecha=" + fecha +
-                ", monto=" + monto +
-                ", sumaEnLetras='" + sumaEnLetras + '\'' +
-                ", porConceptoDe='" + porConceptoDe + '\'' +
-                ", recibidoDe='" + recibidoDe + '\'' +
-                ", tipoPago=" + tipoPago +
-                ", estado=" + estado +
-                '}';
+    public void setCredito(double credito) {
+        this.credito = credito;
     }
 }

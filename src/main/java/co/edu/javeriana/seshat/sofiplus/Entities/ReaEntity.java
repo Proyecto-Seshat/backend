@@ -1,10 +1,20 @@
 package co.edu.javeriana.seshat.sofiplus.Entities;
 
-import javax.persistence.*;
+import lombok.*;
+import org.hibernate.Hibernate;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import java.util.Objects;
 
 @Entity
 @IdClass(ReaEntityPK.class)
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReaEntity {
     @Id
     private String idEvento;
@@ -14,48 +24,18 @@ public class ReaEntity {
     private String idRecurso;
     private double afectacion;
 
-    public String getIdEvento() {
-        return idEvento;
-    }
-
-    public void setIdEvento(String idEvento) {
-        this.idEvento = idEvento;
-    }
-
-    public String getNitFamiempresa() {
-        return nitFamiempresa;
-    }
-
-    public void setNitFamiempresa(String nitFamiempresa) {
-        this.nitFamiempresa = nitFamiempresa;
-    }
-
-    public String getIdRecurso() {
-        return idRecurso;
-    }
-
-    public void setIdRecurso(String idRecurso) {
-        this.idRecurso = idRecurso;
-    }
-
-    public double getAfectacion() {
-        return afectacion;
-    }
-
-    public void setAfectacion(double afectacion) {
-        this.afectacion = afectacion;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         ReaEntity reaEntity = (ReaEntity) o;
-        return idRecurso == reaEntity.idRecurso && Double.compare(reaEntity.afectacion, afectacion) == 0 && Objects.equals(idEvento, reaEntity.idEvento) && Objects.equals(nitFamiempresa, reaEntity.nitFamiempresa);
+        return idEvento != null && Objects.equals(idEvento, reaEntity.idEvento)
+                && nitFamiempresa != null && Objects.equals(nitFamiempresa, reaEntity.nitFamiempresa)
+                && idRecurso != null && Objects.equals(idRecurso, reaEntity.idRecurso);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idEvento, nitFamiempresa, idRecurso, afectacion);
+        return Objects.hash(idEvento, nitFamiempresa, idRecurso);
     }
 }

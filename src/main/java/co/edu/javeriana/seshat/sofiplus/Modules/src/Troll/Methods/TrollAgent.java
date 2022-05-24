@@ -1,16 +1,16 @@
 package co.edu.javeriana.seshat.sofiplus.Modules.src.Troll.Methods;
 
-import co.edu.javeriana.seshat.sofiplus.FrontEntities.Cliente;
+import co.edu.javeriana.seshat.sofiplus.Modules.src.Tercero.FrontEntities.Cliente;
+import co.edu.javeriana.seshat.sofiplus.Kernel.AuthorizationRequiredException;
 import co.edu.javeriana.seshat.sofiplus.Kernel.Kernel;
 import co.edu.javeriana.seshat.sofiplus.Kernel.ModuleRunnable;
-
-import java.util.HashMap;
+import co.edu.javeriana.seshat.sofiplus.Kernel.RequestMessage;
 
 public class TrollAgent implements ModuleRunnable {
     @Override
-    public Object run(HashMap<String, Object> params) {
-        Cliente cliente = (Cliente) Kernel.processRequest("module.teceros.getCliente", params).run();
-        cliente.setNombres("Marico Antonio");
+    public Object run(RequestMessage message) throws AuthorizationRequiredException {
+        Cliente cliente = (Cliente) Kernel.processRequest("module.teceros.getCliente", message).run();
+        cliente.setNombre("Marico Antonio");
         return cliente;
     }
 }

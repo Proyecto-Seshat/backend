@@ -1,40 +1,25 @@
 package co.edu.javeriana.seshat.sofiplus.Entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @IdClass(ConsolidadoEntityPK.class)
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ConsolidadoEntity {
     @Id
-    private int idRecurso;
+    private String idRecurso;
     @Id
     private String nitFamiempresa;
     private double saldo;
-
-    public int getIdRecurso() {
-        return idRecurso;
-    }
-
-    public void setIdRecurso(int idRecurso) {
-        this.idRecurso = idRecurso;
-    }
-
-    public String getNitFamiempresa() {
-        return nitFamiempresa;
-    }
-
-    public void setNitFamiempresa(String nitFamiempresa) {
-        this.nitFamiempresa = nitFamiempresa;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
 
     @Override
     public boolean equals(Object o) {

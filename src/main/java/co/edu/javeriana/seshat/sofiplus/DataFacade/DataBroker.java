@@ -1,17 +1,46 @@
 package co.edu.javeriana.seshat.sofiplus.DataFacade;
 
 import co.edu.javeriana.seshat.sofiplus.Entities.*;
+import co.edu.javeriana.seshat.sofiplus.Modules.src.Tercero.FrontEntities.Cliente;
 
+import java.sql.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 
 public interface DataBroker {
-    public ReaConsolidated requestRea(EventoEntityPK evento);
-    public void registerRea(EventoEntity evento, ReaEntity[] detalles);
-    public HashMap<String, Object> requestMetadata(String key);
-    public void registerMetadata(String key, HashMap<String, Object> document);
-    public void registerAgent(PersonaEntity persona);
-    public PersonaEntity requestAgent(String id);
-    public ItemEntityPK registerItem(ItemEntity item);
-    public String registerFamiempresa(FamiempresaEntity famiempresa);
-    public int registerRecurso(RecursoEntity recurso);
+
+    public Optional<EventoEntity> requerirEvento(EventoEntityPK pk);
+
+    public List<EventoEntity> requerirEventos(String nitFamiempresa, String tipo);
+
+    public List<EventoEntity> requerirEventosPorFecha(String nitFamiempresa, String tipo, Date fecha);
+
+    public ReaConsolidated requerirRea(EventoEntityPK evento);
+
+    public void registrarRea(EventoEntity evento, List<ReaEntity> detalles);
+
+    public void registrarConsolidados(List<ConsolidadoEntity> consolidados);
+
+    public Optional<ConsolidadoEntity> requerirConsolidado(ConsolidadoEntityPK pk);
+
+    public HashMap<String, Object> requerirMetadata(String key);
+
+    public void registrarMetadata(String key, HashMap<String, Object> document);
+
+    public void registrarAgente(PersonaEntity persona);
+
+    public PersonaEntity requerirAgente(String id);
+
+    public String registrarFamiempresa(FamiempresaEntity famiempresa);
+
+    public String registrarRecurso(RecursoEntity recurso);
+
+    public Optional<UsuarioEntity> requerirUsuario(String id);
+
+    public Optional<UsuarioEntity> requerirUsuarioPorEmail(String email);
+
+    public UsuarioEntity registrarUsuario(UsuarioEntity usuario);
+
+    public Cliente buscarCliente(String id);
 }
